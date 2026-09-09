@@ -3,282 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Undangan Pernikahan - Rama & Sinta</title>
-    
-    <!-- Mengambil Font dari Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    
-    <style>
-        /* === PENGATURAN UMUM === */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Poppins', sans-serif;
-            color: #333;
-            background-color: #fdfbf7;
-            text-align: center;
-        }
-        h1, h2, h3, .nama-mempelai {
-            font-family: 'Great Vibes', cursive;
-            color: #b78c52; /* Warna Emas Kecoklatan */
-        }
-        section {
-            padding: 60px 20px;
-        }
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #b78c52;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-top: 20px;
-            font-weight: 600;
-            transition: 0.3s;
-        }
-        .btn:hover {
-            background-color: #9c7540;
-        }
-
-        /* === BAGIAN SAMPUL (HERO) === */
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(rgba(253, 251, 247, 0.8), rgba(253, 251, 247, 0.8)), 
-                        url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') center/cover;
-        }
-        .hero p {
-            letter-spacing: 2px;
-            font-size: 14px;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-        }
-        .hero h1 {
-            font-size: 4rem;
-            margin: 10px 0;
-        }
-        .hero .tanggal {
-            font-size: 18px;
-            font-weight: 600;
-            margin-top: 10px;
-        }
-
-        /* === BAGIAN MEMPELAI === */
-        .mempelai-container {
-            display: flex;
-            justify-content: center;
-            gap: 50px;
-            flex-wrap: wrap;
-            margin-top: 30px;
-        }
-        .profil {
-            max-width: 300px;
-        }
-        .profil img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid #b78c52;
-            margin-bottom: 15px;
-        }
-        .profil h3 {
-            font-size: 2.5rem;
-            margin-bottom: 5px;
-        }
-        .profil p {
-            font-size: 14px;
-            color: #666;
-        }
-
-        /* === BAGIAN ACARA === */
-        .acara {
-            background-color: #f7f1e3;
-        }
-        .acara-container {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            margin-top: 30px;
-        }
-        .kartu-acara {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            width: 300px;
-        }
-        .kartu-acara h3 {
-            font-size: 2rem;
-            margin-bottom: 15px;
-        }
-        .kartu-acara p {
-            margin-bottom: 10px;
-            font-size: 14px;
-        }
-
-        /* === BAGIAN COUNTDOWN === */
-        .countdown-container {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        .waktu {
-            background: #b78c52;
-            color: white;
-            padding: 15px;
-            border-radius: 8px;
-            min-width: 80px;
-        }
-        .waktu span {
-            display: block;
-            font-size: 24px;
-            font-weight: bold;
-        }
-        .waktu small {
-            font-size: 12px;
-            text-transform: uppercase;
-        }
-
-        /* === FOOTER === */
-        footer {
-            background-color: #b78c52;
-            color: white;
-            padding: 20px;
-            font-size: 14px;
-        }
-        footer h2 {
-            color: white;
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-
-        /* Responsif untuk HP */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 3rem; }
-            .mempelai-container, .acara-container { flex-direction: column; align-items: center; }
-        }
-    </style>
+    <title>Undangan Pernikahan - Romeo & Juliet</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="container">
+        <header>
+            <p class="sub-title">The Wedding of</p>
+            <h1>Romeo & Juliet</h1>
+            <p class="date">Sabtu, 12 Desember 2026</p>
+        </header>
 
-    <!-- BAGIAN SAMPUL / HERO -->
-    <section class="hero">
-        <p>The Wedding Of</p>
-        <h1>Rama & Sinta</h1>
-        <p class="tanggal">Minggu, 20 Desember 2026</p>
-        
-        <!-- Hitung Mundur -->
-        <div class="countdown-container" id="countdown">
-            <div class="waktu"><span id="hari">00</span><small>Hari</small></div>
-            <div class="waktu"><span id="jam">00</span><small>Jam</small></div>
-            <div class="waktu"><span id="menit">00</span><small>Menit</small></div>
-            <div class="waktu"><span id="detik">00</span><small>Detik</small></div>
-        </div>
-    </section>
-
-    <!-- BAGIAN PROFIL MEMPELAI -->
-    <section class="mempelai">
-        <p style="margin-bottom: 20px; font-style: italic;">Maha Suci Allah yang telah menciptakan makhluk-Nya berpasang-pasangan. Ya Allah, perkenankanlah kami merangkaikan kasih sayang yang Kau ciptakan di antara kami.</p>
-        <div class="mempelai-container">
-            <!-- Mempelai Pria -->
-            <div class="profil">
-                <!-- Ganti link gambar dengan foto mempelai pria -->
-                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="Mempelai Pria">
-                <h3>Rama Prawira</h3>
-                <p>Putra dari Bapak Budi & Ibu Ani</p>
-            </div>
+        <section class="content">
+            <p>Maha Suci Allah yang telah menciptakan makhluk-Nya berpasang-pasangan. Tanpa mengurangi rasa hormat, kami mengundang Bapak/Ibu/Saudara/i untuk hadir di acara pernikahan kami.</p>
             
-            <h2 style="align-self: center; font-size: 3rem;">&</h2>
-            
-            <!-- Mempelai Wanita -->
-            <div class="profil">
-                <!-- Ganti link gambar dengan foto mempelai wanita -->
-                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="Mempelai Wanita">
-                <h3>Sinta Maharani</h3>
-                <p>Putri dari Bapak Joko & Ibu Sri</p>
+            <div class="event-card">
+                <h2>Akad Nikah & Resepsi</h2>
+                <p><strong>Waktu:</strong> 09.00 WIB - Selesai</p>
+                <p><strong>Lokasi:</strong> Gedung Serbaguna Jakarta</p>
+                <a href="https://maps.google.com" target="_blank" class="btn">Petunjuk Lokasi (Maps)</a>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- BAGIAN DETAIL ACARA -->
-    <section class="acara">
-        <h2 style="font-size: 2.5rem; margin-bottom: 10px;">Detail Acara</h2>
-        <p>Kehadiran dan doa restu Bapak/Ibu/Saudara/i sangat kami harapkan.</p>
-        
-        <div class="acara-container">
-            <!-- Kartu Akad -->
-            <div class="kartu-acara">
-                <h3>Akad Nikah</h3>
-                <p><strong>Minggu, 20 Desember 2026</strong></p>
-                <p>Pukul 08.00 - 10.00 WIB</p>
-                <p><strong>Lokasi:</strong><br>Masjid Agung Kota<br>Jl. Merdeka No. 1</p>
-                <a href="#" class="btn" target="_blank">Lihat Peta</a>
-            </div>
-            
-            <!-- Kartu Resepsi -->
-            <div class="kartu-acara">
-                <h3>Resepsi</h3>
-                <p><strong>Minggu, 20 Desember 2026</strong></p>
-                <p>Pukul 11.00 - Selesai</p>
-                <p><strong>Lokasi:</strong><br>Gedung Serbaguna Kota<br>Jl. Merdeka No. 2</p>
-                <a href="#" class="btn" target="_blank">Lihat Peta</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- BAGIAN PENUTUP & RSVP -->
-    <section class="rsvp">
-        <h2 style="font-size: 2.5rem; margin-bottom: 15px;">RSVP</h2>
-        <p>Mohon konfirmasi kehadiran Anda melalui tombol di bawah ini.</p>
-        <!-- Ganti nomor WhatsApp di bawah ini dengan nomor Anda (format: 628...) -->
-        <a href="https://wa.me/6281234567890?text=Halo%20Rama%20%26%20Sinta,%20saya%20akan%20hadir%20di%20acara%20pernikahan%20kalian!" class="btn" target="_blank">Konfirmasi Kehadiran (WhatsApp)</a>
-    </section>
-
-    <footer>
-        <h2>Terima Kasih</h2>
-        <p>Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu.</p>
-        <br>
-        <p>Kami yang berbahagia,</p>
-        <p style="font-family: 'Great Vibes', cursive; font-size: 1.5rem; margin-top: 5px;">Rama & Sinta</p>
-    </footer>
-
-    <!-- SCRIPT UNTUK HITUNG MUNDUR (COUNTDOWN) -->
-    <script>
-        // Tentukan tanggal pernikahan (Tahun, Bulan-1, Tanggal, Jam, Menit, Detik)
-        // Bulan dimulai dari 0 (0 = Januari, 11 = Desember)
-        const tanggalPernikahan = new Date(2026, 11, 20, 8, 0, 0).getTime();
-
-        const hitungMundur = setInterval(function() {
-            const sekarang = new Date().getTime();
-            const selisih = tanggalPernikahan - sekarang;
-
-            // Kalkulasi hari, jam, menit, detik
-            const hari = Math.floor(selisih / (1000 * 60 * 60 * 24));
-            const jam = Math.floor((selisih % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const menit = Math.floor((selisih % (1000 * 60 * 60)) / (1000 * 60));
-            const detik = Math.floor((selisih % (1000 * 60)) / 1000);
-
-            // Masukkan ke dalam HTML
-            document.getElementById("hari").innerHTML = hari < 10 ? "0" + hari : hari;
-            document.getElementById("jam").innerHTML = jam < 10 ? "0" + jam : jam;
-            document.getElementById("menit").innerHTML = menit < 10 ? "0" + menit : menit;
-            document.getElementById("detik").innerHTML = detik < 10 ? "0" + detik : detik;
-
-            // Jika waktu sudah lewat
-            if (selisih < 0) {
-                clearInterval(hitungMundur);
-                document.getElementById("countdown").innerHTML = "<h3 style='color: #b78c52; font-family: Poppins; margin-top: 15px;'>Acara Sedang/Telah Berlangsung</h3>";
-            }
-        }, 1000);
-    </script>
+        <footer>
+            <p>Terima kasih atas doa dan restu Anda.</p>
+        </footer>
+    </div>
 </body>
 </html>
