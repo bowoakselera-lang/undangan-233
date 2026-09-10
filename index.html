@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Undangan Pernikahan - Romeo & Juliet</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <title>Undangan Pernikahan</title>
+    <!-- Mengambil font estetik dari Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #7b8e78; /* Hijau pastel / sage green */
-            --secondary-color: #dcb3b3; /* Dusty pink pastel */
-            --bg-color: #fdfbf7;
-            --text-color: #4a4a4a;
+            --dark-green: #4A5D4E; /* Sage green gelap untuk teks */
+            --light-green: #899B8C;
+            --gold: #C5A880;
         }
 
         * {
@@ -19,222 +19,174 @@
             box-sizing: border-box;
         }
 
-        body {
+        body, html {
+            height: 100%;
             font-family: 'Montserrat', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            text-align: center;
-        }
-
-        h1, h2, h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: normal;
-        }
-
-        .container {
-            max-width: 500px;
-            margin: 0 auto;
-            background: #fff;
-            box-shadow: 0 0 20px rgba(0,0,0,0.05);
-            overflow: hidden;
-        }
-
-        /* --- Header / Cover Section --- */
-        .cover {
-            position: relative;
-            min-height: 100vh;
+            background-color: #e8ece9; /* Warna dasar pastel */
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 2rem;
-            /* Background bunga/floral pastel yang lembut */
-            background: linear-gradient(rgba(253, 251, 247, 0.7), rgba(253, 251, 247, 0.9)), 
-                        url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=600&auto=format&fit=crop') center/cover no-repeat;
         }
 
-        .cover-subtitle {
-            font-size: 0.9rem;
+        /* Container utama seukuran layar HP */
+        .mobile-container {
+            width: 100%;
+            max-width: 414px; /* Ukuran standar mobile */
+            height: 100vh;
+            max-height: 896px;
+            position: relative;
+            /* Background bunga botani pastel (bisa diganti link gambarnya) */
+            background-image: url('https://images.unsplash.com/photo-1490750967868-88cb4ecb0701?q=80&w=600&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* Overlay gelap sedikit agar teks terbaca */
+        .overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(255, 255, 255, 0.2);
+            z-index: 1;
+        }
+
+        /* Efek Glasshouse / Frosted Glass dengan bentuk Arch (Lengkung) */
+        .glass-arch {
+            position: relative;
+            z-index: 2;
+            width: 85%;
+            height: 85%;
+            /* Efek Kaca / Glassmorphism */
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            /* Bentuk kubah di atas */
+            border-radius: 150px 150px 15px 15px;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+            padding: 3rem 1.5rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Tipografi */
+        .intro {
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
             letter-spacing: 3px;
+            color: var(--dark-green);
             text-transform: uppercase;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        .cover-title {
-            font-size: 3.5rem;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-            font-style: italic;
-        }
-
-        .cover-date {
-            font-size: 1.1rem;
-            margin-top: 2rem;
-            font-weight: 300;
-            letter-spacing: 1px;
-        }
-
-        .btn-open {
-            margin-top: 3rem;
-            padding: 12px 30px;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 30px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: 0.3s;
-            text-decoration: none;
-        }
-
-        .btn-open:hover {
-            background-color: #5c6b5a;
-        }
-
-        /* --- Couple Section --- */
-        .couple-section {
-            padding: 4rem 2rem;
-            background-color: #fff;
-        }
-
-        .bismillah {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            font-family: 'Cormorant Garamond', serif;
+            margin-bottom: 20px;
+            margin-top: 20px;
         }
 
         .couple-names {
-            margin: 2rem 0;
-        }
-
-        .couple-names h2 {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .couple-names p {
-            font-size: 0.9rem;
-            color: #777;
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.5rem;
+            color: var(--dark-green);
+            line-height: 1.2;
+            margin: 10px 0;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
         }
 
         .and {
-            font-size: 2rem;
-            font-family: 'Cormorant Garamond', serif;
-            color: var(--secondary-color);
-            margin: 1rem 0;
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            color: var(--gold);
+            margin: -5px 0;
         }
 
-        /* --- Event Section --- */
-        .event-section {
-            padding: 4rem 2rem;
-            background-color: #f6f7f5;
-            position: relative;
+        .date {
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            color: var(--dark-green);
+            letter-spacing: 2px;
+            margin-top: 30px;
+            border-top: 1px solid var(--gold);
+            border-bottom: 1px solid var(--gold);
+            padding: 10px 0;
+            width: 80%;
         }
 
-        .event-card {
-            background: #fff;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-            margin-bottom: 2rem;
-            border-top: 4px solid var(--secondary-color);
+        .message {
+            font-size: 0.75rem;
+            color: var(--dark-green);
+            margin-top: 30px;
+            font-weight: 400;
         }
 
-        .event-card h3 {
-            font-size: 1.8rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        .event-time {
-            font-weight: 500;
-            margin: 1rem 0;
-            font-size: 1.1rem;
-        }
-
-        .btn-map {
-            display: inline-block;
-            margin-top: 1.5rem;
-            padding: 10px 25px;
-            background-color: var(--secondary-color);
-            color: white;
-            border-radius: 20px;
+        .btn-open {
+            background-color: var(--dark-green);
+            color: #fff;
             text-decoration: none;
-            font-size: 0.85rem;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            border: 1px solid var(--dark-green);
         }
 
-        /* --- Footer --- */
-        .footer {
-            padding: 3rem 2rem;
-            background-color: var(--primary-color);
-            color: white;
+        .btn-open:hover {
+            background-color: transparent;
+            color: var(--dark-green);
+        }
+
+        /* Hiasan daun/bunga tambahan di sudut (Opsional) */
+        .floral-corner {
+            position: absolute;
+            width: 120px;
+            opacity: 0.8;
+            z-index: 3;
+            pointer-events: none;
         }
         
-        .footer h2 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
+        .floral-top {
+            top: -20px;
+            left: -20px;
+            transform: rotate(15deg);
         }
+
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- Bagian Sampul (Cover) -->
-        <section class="cover">
-            <p class="cover-subtitle">The Wedding Of</p>
-            <h1 class="cover-title">Romeo & Juliet</h1>
-            <p class="cover-date">Minggu, 12 Desember 2027</p>
-            <a href="#couple" class="btn-open">Buka Undangan</a>
-        </section>
-
-        <!-- Bagian Mempelai -->
-        <section id="couple" class="couple-section">
-            <p class="bismillah">"Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu isteri-isteri dari jenismu sendiri..."<br>(QS. Ar-Rum: 21)</p>
+    <div class="mobile-container">
+        <div class="overlay"></div>
+        
+        <!-- Kartu Undangan Bentuk Kaca Lengkung -->
+        <div class="glass-arch">
             
-            <p style="margin-bottom: 2rem;">Dengan memohon rahmat dan ridho Allah SWT, kami mengundang Bapak/Ibu/Saudara/i untuk hadir pada acara pernikahan putra-putri kami:</p>
+            <div class="top-section">
+                <p class="intro">The Wedding Of</p>
+                <!-- Nama Mempelai -->
+                <h1 class="couple-names">Romeo</h1>
+                <p class="and">&</p>
+                <h1 class="couple-names">Juliet</h1>
+            </div>
+
+            <!-- Tanggal Acara -->
+            <div class="date">
+                12 . 12 . 2027
+            </div>
+
+            <div class="bottom-section">
+                <p class="message">You are joyfully invited to<br>celebrate our special day</p>
+                <br>
+                <!-- Tombol Buka Undangan -->
+                <a href="#" class="btn-open">Open Invitation</a>
+            </div>
             
-            <div class="couple-names">
-                <h2>Romeo Montague</h2>
-                <p>Putra dari Bapak Fulan & Ibu Fulanah</p>
-            </div>
-
-            <div class="and">&</div>
-
-            <div class="couple-names">
-                <h2>Juliet Capulet</h2>
-                <p>Putri dari Bapak Fulan & Ibu Fulanah</p>
-            </div>
-        </section>
-
-        <!-- Bagian Acara -->
-        <section class="event-section">
-            <div class="event-card">
-                <h3>Akad Nikah</h3>
-                <p>Minggu, 12 Desember 2027</p>
-                <p class="event-time">08.00 - 10.00 WIB</p>
-                <p><strong>Glasshouse Garden Cafe</strong><br>Jl. Bunga Melati No. 12, Jakarta</p>
-                <a href="#" class="btn-map">Lihat Peta Lokasi</a>
-            </div>
-
-            <div class="event-card">
-                <h3>Resepsi</h3>
-                <p>Minggu, 12 Desember 2027</p>
-                <p class="event-time">11.00 - 14.00 WIB</p>
-                <p><strong>Glasshouse Garden Cafe</strong><br>Jl. Bunga Melati No. 12, Jakarta</p>
-                <a href="#" class="btn-map">Lihat Peta Lokasi</a>
-            </div>
-        </section>
-
-        <!-- Penutup -->
-        <section class="footer">
-            <h2>Terima Kasih</h2>
-            <p>Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu.</p>
-            <p style="margin-top: 2rem;">Kami yang berbahagia,<br><strong>Romeo & Juliet</strong></p>
-        </section>
+        </div>
     </div>
 
 </body>
